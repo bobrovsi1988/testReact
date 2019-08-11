@@ -2,24 +2,29 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import HomeList from './Components/Home/HomeList';
+import People from './Components/Peoples/Peoples';
+import { Switch, Route } from 'react-router-dom';
+import {Container, Row} from 'react-bootstrap';
+import Col from 'react-bootstrap/Col';
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Container>
+          <Row>
+              <Col md={4}>
+                  <HomeList/>
+              </Col>
+              <Col md={4}>
+                  <Switch>
+                      <Route exact path='/:homename' component={People}/>
+
+                  </Switch>
+              </Col>
+          </Row>
+
+
+      </Container>
   );
 }
 
